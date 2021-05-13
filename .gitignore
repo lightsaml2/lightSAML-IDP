@@ -1,30 +1,22 @@
-# Cache and logs (Symfony2)
-/app/cache/*
-/app/logs/*
-!app/cache/.gitkeep
-!app/logs/.gitkeep
 
-# Cache and logs (Symfony3)
-/var/cache/*
-/var/logs/*
-!var/cache/.gitkeep
-!var/logs/.gitkeep
+# Created by https://www.toptal.com/developers/gitignore/api/composer,phpunit
+# Edit at https://www.toptal.com/developers/gitignore?templates=composer,phpunit
 
-# Parameters
-/app/config/parameters.yml
-/app/config/parameters.ini
-
-# Managed by Composer
-/app/bootstrap.php.cache
-/var/bootstrap.php.cache
-/bin/*
-!bin/console
-!bin/symfony_requirements
+### Composer ###
+composer.phar
 /vendor/
 
-# Assets and user uploads
-/web/bundles/
-/web/uploads/
+# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# composer.lock
+
+### PHPUnit ###
+# Covers PHPUnit
+# Reference: https://phpunit.de/
+
+# Generated files
+.phpunit.result.cache
+.phpunit.cache
 
 # PHPUnit
 /app/phpunit.xml
@@ -33,11 +25,6 @@
 # Build data
 /build/
 
-# Composer PHAR
-/composer.phar
+# End of https://www.toptal.com/developers/gitignore/api/composer,phpunit
 
-
-/web/idp/idp.log
-/composer.lock
-/*.phar
-/*.cache
+composer.lock

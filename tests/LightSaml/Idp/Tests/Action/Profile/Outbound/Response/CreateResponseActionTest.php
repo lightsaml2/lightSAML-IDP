@@ -6,9 +6,10 @@ use LightSaml\Context\Profile\ProfileContext;
 use LightSaml\Idp\Action\Profile\Outbound\Response\CreateResponseAction;
 use LightSaml\Model\Protocol\Response;
 use LightSaml\Profile\Profiles;
+use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
-class CreateResponseActionTest extends \PHPUnit_Framework_TestCase
+class CreateResponseActionTest extends TestCase
 {
     public function testCreatesResponse()
     {
@@ -24,6 +25,6 @@ class CreateResponseActionTest extends \PHPUnit_Framework_TestCase
      */
     private function getLoggerMock()
     {
-        return $this->getMock(LoggerInterface::class);
+        return $this->getMockBuilder(LoggerInterface::class)->getMock();
     }
 }
