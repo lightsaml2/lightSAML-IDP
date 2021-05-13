@@ -23,8 +23,6 @@ use LightSaml\SamlConstants;
 class CreateAssertionIssuerAction extends AbstractAssertionAction
 {
     /**
-     * @param AssertionContext $context
-     *
      * @return void
      */
     protected function doExecute(AssertionContext $context)

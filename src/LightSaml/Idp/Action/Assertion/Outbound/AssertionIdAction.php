@@ -19,8 +19,6 @@ use LightSaml\Helper;
 class AssertionIdAction extends AbstractAssertionAction
 {
     /**
-     * @param AssertionContext $context
-     *
      * @return void
      */
     protected function doExecute(AssertionContext $context)
@@ -30,7 +28,7 @@ class AssertionIdAction extends AbstractAssertionAction
 
         $this->logger->info(
             sprintf('Assertion ID set to "%s"', $id),
-            LogHelper::getActionContext($context, $this, array('message_id' => $id))
+            LogHelper::getActionContext($context, $this, ['message_id' => $id])
         );
     }
 }

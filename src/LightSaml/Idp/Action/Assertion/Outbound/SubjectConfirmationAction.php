@@ -13,10 +13,10 @@ namespace LightSaml\Idp\Action\Assertion\Outbound;
 
 use LightSaml\Action\Assertion\AbstractAssertionAction;
 use LightSaml\Context\Profile\AssertionContext;
-use LightSaml\Provider\TimeProvider\TimeProviderInterface;
 use LightSaml\Model\Assertion\Subject;
 use LightSaml\Model\Assertion\SubjectConfirmation;
 use LightSaml\Model\Assertion\SubjectConfirmationData;
+use LightSaml\Provider\TimeProvider\TimeProviderInterface;
 use LightSaml\SamlConstants;
 use Psr\Log\LoggerInterface;
 
@@ -32,9 +32,7 @@ class SubjectConfirmationAction extends AbstractAssertionAction
     protected $expirationSeconds;
 
     /**
-     * @param LoggerInterface       $logger
-     * @param TimeProviderInterface $timeProvider
-     * @param int                   $expirationSeconds
+     * @param int $expirationSeconds
      */
     public function __construct(
         LoggerInterface $logger,
@@ -48,8 +46,6 @@ class SubjectConfirmationAction extends AbstractAssertionAction
     }
 
     /**
-     * @param AssertionContext $context
-     *
      * @return void
      */
     protected function doExecute(AssertionContext $context)

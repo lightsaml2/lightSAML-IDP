@@ -25,10 +25,6 @@ class AttributeAction extends AbstractAssertionAction
     /** @var AttributeValueProviderInterface */
     protected $attributeValueProvider;
 
-    /**
-     * @param LoggerInterface                 $logger
-     * @param AttributeValueProviderInterface $attributeValueProvider
-     */
     public function __construct(LoggerInterface $logger, AttributeValueProviderInterface $attributeValueProvider)
     {
         parent::__construct($logger);
@@ -37,8 +33,6 @@ class AttributeAction extends AbstractAssertionAction
     }
 
     /**
-     * @param AssertionContext $context
-     *
      * @return void
      */
     protected function doExecute(AssertionContext $context)

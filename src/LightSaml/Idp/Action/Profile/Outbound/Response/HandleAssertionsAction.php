@@ -30,10 +30,9 @@ class HandleAssertionsAction extends AbstractProfileAction implements CompositeA
     protected $assertionActions;
 
     /**
-     * @param LoggerInterface   $logger
      * @param ActionInterface[] $assertionActions
      */
-    public function __construct(LoggerInterface $logger, array $assertionActions = array())
+    public function __construct(LoggerInterface $logger, array $assertionActions = [])
     {
         parent::__construct($logger);
 
@@ -43,8 +42,6 @@ class HandleAssertionsAction extends AbstractProfileAction implements CompositeA
     }
 
     /**
-     * @param ActionInterface $assertionAction
-     *
      * @return HandleAssertionsAction
      */
     public function add(ActionInterface $assertionAction)
@@ -70,8 +67,6 @@ class HandleAssertionsAction extends AbstractProfileAction implements CompositeA
     }
 
     /**
-     * @param ProfileContext $context
-     *
      * @return void
      */
     protected function doExecute(ProfileContext $context)

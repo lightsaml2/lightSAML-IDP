@@ -25,10 +25,6 @@ class SubjectNameIdAction extends AbstractAssertionAction
     /** @var NameIDProviderInterface */
     protected $nameIdProvider;
 
-    /**
-     * @param LoggerInterface         $logger
-     * @param NameIDProviderInterface $nameIdProvider
-     */
     public function __construct(LoggerInterface $logger, NameIdProviderInterface $nameIdProvider)
     {
         parent::__construct($logger);
@@ -37,8 +33,6 @@ class SubjectNameIdAction extends AbstractAssertionAction
     }
 
     /**
-     * @param AssertionContext $context
-     *
      * @return void
      */
     protected function doExecute(AssertionContext $context)

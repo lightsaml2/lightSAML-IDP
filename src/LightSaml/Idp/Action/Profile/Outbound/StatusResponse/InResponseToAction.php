@@ -21,8 +21,6 @@ use LightSaml\Context\Profile\ProfileContext;
 class InResponseToAction extends AbstractProfileAction
 {
     /**
-     * @param ProfileContext $context
-     *
      * @return void
      */
     protected function doExecute(ProfileContext $context)

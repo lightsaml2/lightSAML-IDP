@@ -21,10 +21,6 @@ class IdpSsoStateAction extends AbstractAssertionAction
     /** @var SessionProcessorInterface */
     private $sessionProcessor;
 
-    /**
-     * @param LoggerInterface           $logger
-     * @param SessionProcessorInterface $sessionProcessor
-     */
     public function __construct(LoggerInterface $logger, SessionProcessorInterface $sessionProcessor)
     {
         parent::__construct($logger);
@@ -33,15 +29,13 @@ class IdpSsoStateAction extends AbstractAssertionAction
     }
 
     /**
-     * @param AssertionContext $context
-     *
      * @return void
      */
     protected function doExecute(AssertionContext $context)
     {
         if ($context->getAssertion()) {
             $this->sessionProcessor->processAssertions(
-                array($context->getAssertion()),
+                [$context->getAssertion()],
                 $context->getProfileContext()->getOwnEntityDescriptor()->getEntityID(),
                 $context->getProfileContext()->getPartyEntityDescriptor()->getEntityID()
             );

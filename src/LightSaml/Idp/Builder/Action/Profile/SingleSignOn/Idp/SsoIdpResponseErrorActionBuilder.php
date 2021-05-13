@@ -15,9 +15,9 @@ use LightSaml\Action\Profile\Inbound\Message\ResolvePartyEntityIdAction;
 use LightSaml\Action\Profile\Outbound\Message\CreateMessageIssuerAction;
 use LightSaml\Action\Profile\Outbound\Message\ResolveEndpointSpAcsAction;
 use LightSaml\Action\Profile\Outbound\Message\SendMessageAction;
+use LightSaml\Builder\Action\Profile\AbstractProfileActionBuilder;
 use LightSaml\Idp\Action\Profile\Outbound\Response\CreateResponseAction;
 use LightSaml\Idp\Action\Profile\Outbound\StatusResponse\SetStatusAction;
-use LightSaml\Builder\Action\Profile\AbstractProfileActionBuilder;
 use LightSaml\SamlConstants;
 
 class SsoIdpResponseErrorActionBuilder extends AbstractProfileActionBuilder

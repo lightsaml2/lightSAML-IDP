@@ -13,9 +13,9 @@ namespace LightSaml\Idp\Action\Assertion\Outbound;
 
 use LightSaml\Action\Assertion\AbstractAssertionAction;
 use LightSaml\Context\Profile\AssertionContext;
-use LightSaml\Provider\TimeProvider\TimeProviderInterface;
 use LightSaml\Model\Assertion\AudienceRestriction;
 use LightSaml\Model\Assertion\Conditions;
+use LightSaml\Provider\TimeProvider\TimeProviderInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -30,9 +30,7 @@ class ConditionsAction extends AbstractAssertionAction
     protected $expirationSeconds;
 
     /**
-     * @param LoggerInterface       $logger
-     * @param TimeProviderInterface $timeProvider
-     * @param int                   $expirationSeconds
+     * @param int $expirationSeconds
      */
     public function __construct(LoggerInterface $logger, TimeProviderInterface $timeProvider, $expirationSeconds)
     {
@@ -43,8 +41,6 @@ class ConditionsAction extends AbstractAssertionAction
     }
 
     /**
-     * @param AssertionContext $context
-     *
      * @return void
      */
     protected function doExecute(AssertionContext $context)
@@ -55,9 +51,9 @@ class ConditionsAction extends AbstractAssertionAction
         $conditions->setNotBefore($this->timeProvider->getTimestamp());
         $conditions->setNotOnOrAfter($conditions->getNotBeforeTimestamp() + $this->expirationSeconds);
 
-        $audienceRestriction = new AudienceRestriction(array(
+        $audienceRestriction = new AudienceRestriction([
             $partyEntityDescriptor->getEntityID(),
-        ));
+        ]);
         $conditions->addItem($audienceRestriction);
 
         $context->getAssertion()->setConditions($conditions);

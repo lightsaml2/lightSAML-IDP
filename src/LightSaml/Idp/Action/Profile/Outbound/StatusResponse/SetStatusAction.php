@@ -28,9 +28,8 @@ class SetStatusAction extends AbstractProfileAction
     protected $statusMessage;
 
     /**
-     * @param LoggerInterface $logger
-     * @param string          $statusCode
-     * @param string          $statusMessage
+     * @param string $statusCode
+     * @param string $statusMessage
      */
     public function __construct(LoggerInterface $logger, $statusCode = SamlConstants::STATUS_SUCCESS, $statusMessage = null)
     {
@@ -40,9 +39,6 @@ class SetStatusAction extends AbstractProfileAction
         $this->statusMessage = $statusMessage;
     }
 
-    /**
-     * @param ProfileContext $context
-     */
     protected function doExecute(ProfileContext $context)
     {
         $statusResponse = MessageContextHelper::asStatusResponse($context->getOutboundContext());

@@ -18,8 +18,6 @@ use LightSaml\Model\Assertion\Assertion;
 class CreateAssertionAction extends AbstractAssertionAction
 {
     /**
-     * @param AssertionContext $context
-     *
      * @return void
      */
     protected function doExecute(AssertionContext $context)

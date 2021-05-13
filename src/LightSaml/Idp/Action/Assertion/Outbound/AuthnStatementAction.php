@@ -28,10 +28,6 @@ class AuthnStatementAction extends AbstractAssertionAction
     /** @var SessionInfoProviderInterface */
     protected $sessionInfoProvider;
 
-    /**
-     * @param LoggerInterface              $logger
-     * @param SessionInfoProviderInterface $sessionInfoProvider
-     */
     public function __construct(LoggerInterface $logger, SessionInfoProviderInterface $sessionInfoProvider)
     {
         parent::__construct($logger);
@@ -40,8 +36,6 @@ class AuthnStatementAction extends AbstractAssertionAction
     }
 
     /**
-     * @param AssertionContext $context
-     *
      * @return void
      */
     protected function doExecute(AssertionContext $context)

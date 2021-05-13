@@ -25,10 +25,6 @@ class SignAssertionAction extends AbstractAssertionAction
     /** @var SignatureResolverInterface */
     protected $signatureResolver;
 
-    /**
-     * @param LoggerInterface            $logger
-     * @param SignatureResolverInterface $signatureResolver
-     */
     public function __construct(LoggerInterface $logger, SignatureResolverInterface $signatureResolver)
     {
         parent::__construct($logger);
@@ -37,8 +33,6 @@ class SignAssertionAction extends AbstractAssertionAction
     }
 
     /**
-     * @param AssertionContext $context
-     *
      * @return void
      */
     protected function doExecute(AssertionContext $context)
@@ -54,9 +48,9 @@ class SignAssertionAction extends AbstractAssertionAction
                         'Signing assertion with fingerprint %s',
                         $signature->getCertificate()->getFingerprint()
                     ),
-                    LogHelper::getActionContext($context, $this, array(
+                    LogHelper::getActionContext($context, $this, [
                         'certificate' => $signature->getCertificate()->getInfo(),
-                    ))
+                    ])
                 );
                 $context->getAssertion()->setSignature($signature);
             } else {

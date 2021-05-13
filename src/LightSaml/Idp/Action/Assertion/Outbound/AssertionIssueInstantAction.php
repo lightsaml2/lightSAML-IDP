@@ -22,10 +22,6 @@ class AssertionIssueInstantAction extends AbstractAssertionAction
     /** @var TimeProviderInterface */
     protected $timeProvider;
 
-    /**
-     * @param LoggerInterface       $logger
-     * @param TimeProviderInterface $timeProvider
-     */
     public function __construct(LoggerInterface $logger, TimeProviderInterface $timeProvider)
     {
         parent::__construct($logger);
@@ -34,8 +30,6 @@ class AssertionIssueInstantAction extends AbstractAssertionAction
     }
 
     /**
-     * @param AssertionContext $context
-     *
      * @return void
      */
     protected function doExecute(AssertionContext $context)

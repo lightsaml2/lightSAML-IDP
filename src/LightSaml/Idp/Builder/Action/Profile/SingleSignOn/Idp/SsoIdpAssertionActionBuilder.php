@@ -11,6 +11,7 @@
 
 namespace LightSaml\Idp\Builder\Action\Profile\SingleSignOn\Idp;
 
+use LightSaml\Builder\Action\Profile\AbstractProfileActionBuilder;
 use LightSaml\Idp\Action\Assertion\Outbound\AssertionIdAction;
 use LightSaml\Idp\Action\Assertion\Outbound\AssertionIssueInstantAction;
 use LightSaml\Idp\Action\Assertion\Outbound\AssertionVersionAction;
@@ -24,7 +25,6 @@ use LightSaml\Idp\Action\Assertion\Outbound\IdpSsoStateAction;
 use LightSaml\Idp\Action\Assertion\Outbound\SignAssertionAction;
 use LightSaml\Idp\Action\Assertion\Outbound\SubjectConfirmationAction;
 use LightSaml\Idp\Action\Assertion\Outbound\SubjectNameIdAction;
-use LightSaml\Builder\Action\Profile\AbstractProfileActionBuilder;
 use LightSaml\SamlConstants;
 
 class SsoIdpAssertionActionBuilder extends AbstractProfileActionBuilder

@@ -17,27 +17,25 @@ use LightSaml\Action\Profile\Outbound\Message\DestinationAction;
 use LightSaml\Action\Profile\Outbound\Message\ForwardRelayStateAction;
 use LightSaml\Action\Profile\Outbound\Message\MessageIdAction;
 use LightSaml\Action\Profile\Outbound\Message\MessageIssueInstantAction;
+use LightSaml\Action\Profile\Outbound\Message\MessageVersionAction;
 use LightSaml\Action\Profile\Outbound\Message\ResolveEndpointSpAcsAction;
 use LightSaml\Action\Profile\Outbound\Message\SendMessageAction;
 use LightSaml\Action\Profile\Outbound\Message\SignMessageAction;
-use LightSaml\Action\Profile\Outbound\Message\MessageVersionAction;
-use LightSaml\Idp\Action\Profile\Outbound\Response\HandleAssertionsAction;
-use LightSaml\Idp\Action\Profile\Outbound\Response\CreateResponseAction;
-use LightSaml\Idp\Action\Profile\Outbound\StatusResponse\InResponseToAction;
-use LightSaml\Idp\Action\Profile\Outbound\StatusResponse\SetStatusAction;
 use LightSaml\Builder\Action\ActionBuilderInterface;
 use LightSaml\Builder\Action\Profile\AbstractProfileActionBuilder;
 use LightSaml\Error\LightSamlException;
+use LightSaml\Idp\Action\Profile\Outbound\Response\CreateResponseAction;
+use LightSaml\Idp\Action\Profile\Outbound\Response\HandleAssertionsAction;
+use LightSaml\Idp\Action\Profile\Outbound\StatusResponse\InResponseToAction;
+use LightSaml\Idp\Action\Profile\Outbound\StatusResponse\SetStatusAction;
 use LightSaml\SamlConstants;
 
 class SsoIdpSendResponseActionBuilder extends AbstractProfileActionBuilder
 {
     /** @var ActionBuilderInterface[] */
-    private $assertionActions = array();
+    private $assertionActions = [];
 
     /**
-     * @param ActionBuilderInterface $assertionBuilder
-     *
      * @return SsoIdpSendResponseActionBuilder
      */
     public function addAssertionBuilder(ActionBuilderInterface $assertionBuilder)

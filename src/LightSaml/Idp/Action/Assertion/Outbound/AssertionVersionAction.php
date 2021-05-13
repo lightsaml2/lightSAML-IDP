@@ -22,8 +22,7 @@ class AssertionVersionAction extends AbstractAssertionAction
     private $version;
 
     /**
-     * @param LoggerInterface $logger
-     * @param string          $version
+     * @param string $version
      */
     public function __construct(LoggerInterface $logger, $version)
     {
@@ -33,8 +32,6 @@ class AssertionVersionAction extends AbstractAssertionAction
     }
 
     /**
-     * @param AssertionContext $context
-     *
      * @return void
      */
     protected function doExecute(AssertionContext $context)

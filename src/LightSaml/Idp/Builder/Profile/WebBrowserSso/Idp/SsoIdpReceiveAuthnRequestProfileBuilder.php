@@ -11,9 +11,9 @@
 
 namespace LightSaml\Idp\Builder\Profile\WebBrowserSso\Idp;
 
-use LightSaml\Idp\Builder\Action\Profile\SingleSignOn\Idp\SsoIdpReceiveRequestActionBuilder;
 use LightSaml\Builder\Profile\AbstractProfileBuilder;
 use LightSaml\Context\Profile\ProfileContext;
+use LightSaml\Idp\Builder\Action\Profile\SingleSignOn\Idp\SsoIdpReceiveRequestActionBuilder;
 use LightSaml\Profile\Profiles;
 
 class SsoIdpReceiveAuthnRequestProfileBuilder extends AbstractProfileBuilder

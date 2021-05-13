@@ -13,9 +13,9 @@ namespace LightSaml\Idp\Builder\Profile\WebBrowserSso\Idp;
 
 use LightSaml\Build\Container\BuildContainerInterface;
 use LightSaml\Builder\Action\ActionBuilderInterface;
-use LightSaml\Idp\Builder\Action\Profile\SingleSignOn\Idp\SsoIdpSendResponseActionBuilder;
 use LightSaml\Builder\Profile\AbstractProfileBuilder;
 use LightSaml\Context\Profile\ProfileContext;
+use LightSaml\Idp\Builder\Action\Profile\SingleSignOn\Idp\SsoIdpSendResponseActionBuilder;
 use LightSaml\Meta\TrustOptions\TrustOptions;
 use LightSaml\Model\Metadata\Endpoint;
 use LightSaml\Model\Metadata\EntityDescriptor;
@@ -25,7 +25,7 @@ use LightSaml\Profile\Profiles;
 class SsoIdpSendResponseProfileBuilder extends AbstractProfileBuilder
 {
     /** @var ActionBuilderInterface[] */
-    private $assertionBuilders = array();
+    private $assertionBuilders = [];
 
     /** @var string */
     private $entityId;
@@ -46,7 +46,6 @@ class SsoIdpSendResponseProfileBuilder extends AbstractProfileBuilder
     private $relayState;
 
     /**
-     * @param BuildContainerInterface  $buildContainer
      * @param ActionBuilderInterface[] $assertionBuilders
      * @param string                   $entityId
      */
@@ -61,8 +60,6 @@ class SsoIdpSendResponseProfileBuilder extends AbstractProfileBuilder
     }
 
     /**
-     * @param EntityDescriptor $entityDescriptor
-     *
      * @return SsoIdpSendResponseProfileBuilder
      */
     public function setPartyEntityDescriptor(EntityDescriptor $entityDescriptor)
@@ -73,8 +70,6 @@ class SsoIdpSendResponseProfileBuilder extends AbstractProfileBuilder
     }
 
     /**
-     * @param TrustOptions $partyTrustOptions
-     *
      * @return SsoIdpSendResponseProfileBuilder
      */
     public function setPartyTrustOptions(TrustOptions $partyTrustOptions)
@@ -85,8 +80,6 @@ class SsoIdpSendResponseProfileBuilder extends AbstractProfileBuilder
     }
 
     /**
-     * @param Endpoint $endpoint
-     *
      * @return SsoIdpSendResponseProfileBuilder
      */
     public function setEndpoint(Endpoint $endpoint)
@@ -120,9 +113,6 @@ class SsoIdpSendResponseProfileBuilder extends AbstractProfileBuilder
         return $this;
     }
 
-    /**
-     * @param ActionBuilderInterface $assertionBuilder
-     */
     private function addAssertionBuilder(ActionBuilderInterface $assertionBuilder)
     {
         $this->assertionBuilders[] = $assertionBuilder;
