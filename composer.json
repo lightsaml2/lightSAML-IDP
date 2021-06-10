@@ -11,7 +11,7 @@
     },
     "require": {
         "php": "^7.0|^8.0",
-        "lightsaml2/lightsaml": "dev-master",
+        "lightsaml2/lightsaml": "^2.0",
         "psr/log": "^1.1"
     },
     "require-dev": {
