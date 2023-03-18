@@ -1,6 +1,6 @@
 {
     "name": "lightsaml2/lightsaml-idp",
-    "license": "GPL-3.0+",
+    "license": "GPL-3.0-or-later",
     "type": "library",
     "description": "Light SAML2 IDP php library",
     "autoload": {
