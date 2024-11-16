@@ -25,21 +25,12 @@ use Psr\Log\LoggerInterface;
  */
 class AuthnStatementAction extends AbstractAssertionAction
 {
-    /** @var SessionInfoProviderInterface */
-    protected $sessionInfoProvider;
-
-    public function __construct(LoggerInterface $logger, SessionInfoProviderInterface $sessionInfoProvider)
+    public function __construct(LoggerInterface $logger, protected SessionInfoProviderInterface $sessionInfoProvider)
     {
         parent::__construct($logger);
-
-        $this->sessionInfoProvider = $sessionInfoProvider;
     }
 
-    /**
-     * @return void
-     */
-    protected function doExecute(AssertionContext $context)
-    {
+    protected function doExecute(AssertionContext $context): void {
         $authnContext = new AuthnContext();
         $authnContextClassRef = $this->sessionInfoProvider->getAuthnContextClassRef() ?: SamlConstants::AUTHN_CONTEXT_UNSPECIFIED;
         $authnContext->setAuthnContextClassRef($authnContextClassRef);

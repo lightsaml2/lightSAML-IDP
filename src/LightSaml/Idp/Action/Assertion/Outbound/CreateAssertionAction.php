@@ -17,11 +17,7 @@ use LightSaml\Model\Assertion\Assertion;
 
 class CreateAssertionAction extends AbstractAssertionAction
 {
-    /**
-     * @return void
-     */
-    protected function doExecute(AssertionContext $context)
-    {
+    protected function doExecute(AssertionContext $context): void {
         $context->setAssertion(new Assertion());
     }
 }

@@ -20,11 +20,7 @@ use LightSaml\Context\Profile\ProfileContext;
  */
 class InResponseToAction extends AbstractProfileAction
 {
-    /**
-     * @return void
-     */
-    protected function doExecute(ProfileContext $context)
-    {
+    protected function doExecute(ProfileContext $context): void {
         if ($context->getInboundContext()->getMessage()) {
             MessageContextHelper::asStatusResponse($context->getOutboundContext())->setInResponseTo(
                 MessageContextHelper::asSamlMessage($context->getInboundContext())->getID()

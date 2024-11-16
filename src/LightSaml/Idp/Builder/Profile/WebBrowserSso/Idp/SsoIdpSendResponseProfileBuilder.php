@@ -24,32 +24,13 @@ use LightSaml\Profile\Profiles;
 
 class SsoIdpSendResponseProfileBuilder extends AbstractProfileBuilder
 {
-    /** @var ActionBuilderInterface[] */
-    private $assertionBuilders = [];
+    private EntityDescriptor|null $partyEntityDescriptor;
+    private TrustOptions|null $partyTrustOptions;
+    private Endpoint|null $endpoint;
+    private SamlMessage|null $message;
+    private string|null $relayState;
 
-    /** @var string */
-    private $entityId;
-
-    /** @var EntityDescriptor */
-    private $partyEntityDescriptor;
-
-    /** @var TrustOptions */
-    private $partyTrustOptions;
-
-    /** @var Endpoint */
-    private $endpoint;
-
-    /** @var SamlMessage */
-    private $message;
-
-    /** @var string */
-    private $relayState;
-
-    /**
-     * @param ActionBuilderInterface[] $assertionBuilders
-     * @param string                   $entityId
-     */
-    public function __construct(BuildContainerInterface $buildContainer, array $assertionBuilders, $entityId)
+    public function __construct(BuildContainerInterface $buildContainer, private array $assertionBuilders, private string $entityId)
     {
         parent::__construct($buildContainer);
 
@@ -59,86 +40,49 @@ class SsoIdpSendResponseProfileBuilder extends AbstractProfileBuilder
         }
     }
 
-    /**
-     * @return SsoIdpSendResponseProfileBuilder
-     */
-    public function setPartyEntityDescriptor(EntityDescriptor $entityDescriptor)
-    {
+    public function setPartyEntityDescriptor(EntityDescriptor $entityDescriptor): static {
         $this->partyEntityDescriptor = $entityDescriptor;
 
         return $this;
     }
 
-    /**
-     * @return SsoIdpSendResponseProfileBuilder
-     */
-    public function setPartyTrustOptions(TrustOptions $partyTrustOptions)
-    {
+    public function setPartyTrustOptions(TrustOptions $partyTrustOptions): static {
         $this->partyTrustOptions = $partyTrustOptions;
 
         return $this;
     }
 
-    /**
-     * @return SsoIdpSendResponseProfileBuilder
-     */
-    public function setEndpoint(Endpoint $endpoint)
-    {
+    public function setEndpoint(Endpoint $endpoint): static {
         $this->endpoint = $endpoint;
 
         return $this;
     }
 
-    /**
-     * @param SamlMessage $message
-     *
-     * @return SsoIdpSendResponseProfileBuilder
-     */
-    public function setMessage($message)
-    {
+    public function setMessage(SamlMessage $message): static {
         $this->message = $message;
 
         return $this;
     }
 
-    /**
-     * @param string $relayState
-     *
-     * @return SsoIdpSendResponseProfileBuilder
-     */
-    public function setRelayState($relayState)
-    {
+    public function setRelayState(string $relayState): static {
         $this->relayState = $relayState;
 
         return $this;
     }
 
-    private function addAssertionBuilder(ActionBuilderInterface $assertionBuilder)
-    {
+    private function addAssertionBuilder(ActionBuilderInterface $assertionBuilder): void {
         $this->assertionBuilders[] = $assertionBuilder;
     }
 
-    /**
-     * @return string
-     */
-    protected function getProfileId()
-    {
+    protected function getProfileId(): string {
         return Profiles::SSO_IDP_SEND_RESPONSE;
     }
 
-    /**
-     * @return string
-     */
-    protected function getProfileRole()
-    {
+    protected function getProfileRole(): string {
         return ProfileContext::ROLE_IDP;
     }
 
-    /**
-     * @return SsoIdpSendResponseActionBuilder
-     */
-    protected function getActionBuilder()
-    {
+    protected function getActionBuilder(): SsoIdpSendResponseActionBuilder {
         $result = new SsoIdpSendResponseActionBuilder($this->container);
 
         foreach ($this->assertionBuilders as $assertionAction) {
@@ -148,11 +92,8 @@ class SsoIdpSendResponseProfileBuilder extends AbstractProfileBuilder
         return $result;
     }
 
-    /**
-     * @return ProfileContext
-     */
-    public function buildContext()
-    {
+
+    public function buildContext(): ProfileContext {
         $result = parent::buildContext();
 
         $result->getPartyEntityContext()->setEntityId($this->entityId);

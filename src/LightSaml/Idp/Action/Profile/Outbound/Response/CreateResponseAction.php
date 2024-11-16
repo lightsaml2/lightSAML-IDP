@@ -17,8 +17,7 @@ use LightSaml\Model\Protocol\Response;
 
 class CreateResponseAction extends AbstractProfileAction
 {
-    protected function doExecute(ProfileContext $context)
-    {
+    protected function doExecute(ProfileContext $context): void {
         $context->getOutboundContext()->setMessage(new Response());
     }
 }

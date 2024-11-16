@@ -22,11 +22,7 @@ use LightSaml\SamlConstants;
 
 class SsoIdpResponseErrorActionBuilder extends AbstractProfileActionBuilder
 {
-    /**
-     * @return void
-     */
-    protected function doInitialize()
-    {
+    protected function doInitialize(): void {
         $this->add(new ResolvePartyEntityIdAction(
             $this->buildContainer->getSystemContainer()->getLogger(),
             $this->buildContainer->getPartyContainer()->getSpEntityDescriptorStore(),

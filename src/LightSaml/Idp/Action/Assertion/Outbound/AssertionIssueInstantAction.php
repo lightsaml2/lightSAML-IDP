@@ -19,21 +19,12 @@ use Psr\Log\LoggerInterface;
 
 class AssertionIssueInstantAction extends AbstractAssertionAction
 {
-    /** @var TimeProviderInterface */
-    protected $timeProvider;
-
-    public function __construct(LoggerInterface $logger, TimeProviderInterface $timeProvider)
+    public function __construct(LoggerInterface $logger, protected TimeProviderInterface $timeProvider)
     {
         parent::__construct($logger);
-
-        $this->timeProvider = $timeProvider;
     }
 
-    /**
-     * @return void
-     */
-    protected function doExecute(AssertionContext $context)
-    {
+    protected function doExecute(AssertionContext $context): void {
         $context->getAssertion()->setIssueInstant($this->timeProvider->getTimestamp());
 
         $this->logger->info(

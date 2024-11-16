@@ -11,6 +11,7 @@
 
 namespace LightSaml\Idp\Builder\Profile\WebBrowserSso\Idp;
 
+use LightSaml\Builder\Action\ActionBuilderInterface;
 use LightSaml\Builder\Profile\AbstractProfileBuilder;
 use LightSaml\Context\Profile\ProfileContext;
 use LightSaml\Idp\Builder\Action\Profile\SingleSignOn\Idp\SsoIdpReceiveRequestActionBuilder;
@@ -18,27 +19,16 @@ use LightSaml\Profile\Profiles;
 
 class SsoIdpReceiveAuthnRequestProfileBuilder extends AbstractProfileBuilder
 {
-    /**
-     * @return string
-     */
-    protected function getProfileId()
-    {
+
+    protected function getProfileId(): string {
         return Profiles::SSO_IDP_RECEIVE_AUTHN_REQUEST;
     }
 
-    /**
-     * @return string
-     */
-    protected function getProfileRole()
-    {
+    protected function getProfileRole(): string {
         return ProfileContext::ROLE_IDP;
     }
 
-    /**
-     * @return \LightSaml\Builder\Action\ActionBuilderInterface
-     */
-    protected function getActionBuilder()
-    {
+    protected function getActionBuilder(): ActionBuilderInterface|SsoIdpReceiveRequestActionBuilder {
         return new SsoIdpReceiveRequestActionBuilder($this->container);
     }
 }

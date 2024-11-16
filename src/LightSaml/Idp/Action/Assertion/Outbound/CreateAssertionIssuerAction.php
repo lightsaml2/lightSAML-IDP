@@ -22,11 +22,7 @@ use LightSaml\SamlConstants;
  */
 class CreateAssertionIssuerAction extends AbstractAssertionAction
 {
-    /**
-     * @return void
-     */
-    protected function doExecute(AssertionContext $context)
-    {
+    protected function doExecute(AssertionContext $context): void {
         $ownEntityDescriptor = $context->getProfileContext()->getOwnEntityDescriptor();
 
         $issuer = new Issuer($ownEntityDescriptor->getEntityID());

@@ -25,31 +25,15 @@ use Psr\Log\LoggerInterface;
  */
 class SubjectConfirmationAction extends AbstractAssertionAction
 {
-    /** @var TimeProviderInterface */
-    protected $timeProvider;
-
-    /** @var int */
-    protected $expirationSeconds;
-
-    /**
-     * @param int $expirationSeconds
-     */
     public function __construct(
         LoggerInterface $logger,
-        TimeProviderInterface $timeProvider,
-        $expirationSeconds
+        protected TimeProviderInterface $timeProvider,
+        protected int $expirationSeconds
     ) {
         parent::__construct($logger);
-
-        $this->expirationSeconds = $expirationSeconds;
-        $this->timeProvider = $timeProvider;
     }
 
-    /**
-     * @return void
-     */
-    protected function doExecute(AssertionContext $context)
-    {
+    protected function doExecute(AssertionContext $context): void {
         $profileContext = $context->getProfileContext();
         $inboundMessage = $profileContext->getInboundContext()->getMessage();
         $endpoint = $profileContext->getEndpoint();

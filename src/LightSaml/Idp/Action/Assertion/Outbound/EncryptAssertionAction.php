@@ -27,21 +27,12 @@ use Psr\Log\LoggerInterface;
 
 class EncryptAssertionAction extends AbstractAssertionAction
 {
-    /** @var CredentialResolverInterface */
-    protected $credentialResolver;
-
-    public function __construct(LoggerInterface $logger, CredentialResolverInterface $credentialResolver)
+    public function __construct(LoggerInterface $logger, protected CredentialResolverInterface $credentialResolver)
     {
         parent::__construct($logger);
-
-        $this->credentialResolver = $credentialResolver;
     }
-
-    /**
-     * @return void
-     */
-    protected function doExecute(AssertionContext $context)
-    {
+    
+    protected function doExecute(AssertionContext $context): void {
         $profileContext = $context->getProfileContext();
         $trustOptions = $profileContext->getTrustOptions();
         if (false === $trustOptions->getEncryptAssertions()) {

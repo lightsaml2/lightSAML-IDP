@@ -33,23 +33,15 @@ use LightSaml\SamlConstants;
 class SsoIdpSendResponseActionBuilder extends AbstractProfileActionBuilder
 {
     /** @var ActionBuilderInterface[] */
-    private $assertionActions = [];
+    private array $assertionActions = [];
 
-    /**
-     * @return SsoIdpSendResponseActionBuilder
-     */
-    public function addAssertionBuilder(ActionBuilderInterface $assertionBuilder)
-    {
+    public function addAssertionBuilder(ActionBuilderInterface $assertionBuilder): static {
         $this->assertionActions[] = $assertionBuilder;
 
         return $this;
     }
 
-    /**
-     * @return void
-     */
-    protected function doInitialize()
-    {
+    protected function doInitialize(): void {
         if (empty($this->assertionActions)) {
             throw new LightSamlException('No assertion builder set');
         }

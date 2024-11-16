@@ -21,26 +21,12 @@ use Psr\Log\LoggerInterface;
 
 class SetStatusAction extends AbstractProfileAction
 {
-    /** @var string */
-    protected $statusCode;
-
-    /** @var string */
-    protected $statusMessage;
-
-    /**
-     * @param string $statusCode
-     * @param string $statusMessage
-     */
-    public function __construct(LoggerInterface $logger, $statusCode = SamlConstants::STATUS_SUCCESS, $statusMessage = null)
+    public function __construct(LoggerInterface $logger, protected string $statusCode = SamlConstants::STATUS_SUCCESS, protected ?string $statusMessage = null)
     {
         parent::__construct($logger);
-
-        $this->statusCode = $statusCode;
-        $this->statusMessage = $statusMessage;
     }
 
-    protected function doExecute(ProfileContext $context)
-    {
+    protected function doExecute(ProfileContext $context): void {
         $statusResponse = MessageContextHelper::asStatusResponse($context->getOutboundContext());
 
         $statusResponse->setStatus(new Status(new StatusCode($this->statusCode), $this->statusCode));

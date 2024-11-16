@@ -27,8 +27,7 @@ class SsoIdpReceiveRequestActionBuilder extends AbstractProfileActionBuilder
     /**
      * @return void
      */
-    protected function doInitialize()
-    {
+    protected function doInitialize(): void {
         // Receive
         $this->add(new ReceiveMessageAction(
             $this->buildContainer->getSystemContainer()->getLogger(),

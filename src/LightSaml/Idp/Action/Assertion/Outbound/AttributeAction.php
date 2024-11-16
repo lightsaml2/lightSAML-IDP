@@ -22,21 +22,12 @@ use Psr\Log\LoggerInterface;
  */
 class AttributeAction extends AbstractAssertionAction
 {
-    /** @var AttributeValueProviderInterface */
-    protected $attributeValueProvider;
-
-    public function __construct(LoggerInterface $logger, AttributeValueProviderInterface $attributeValueProvider)
+    public function __construct(LoggerInterface $logger, protected AttributeValueProviderInterface $attributeValueProvider)
     {
         parent::__construct($logger);
-
-        $this->attributeValueProvider = $attributeValueProvider;
     }
 
-    /**
-     * @return void
-     */
-    protected function doExecute(AssertionContext $context)
-    {
+    protected function doExecute(AssertionContext $context): void {
         $attributes = $this->attributeValueProvider->getValues($context);
         if ($attributes) {
             $attributeStatement = new AttributeStatement();

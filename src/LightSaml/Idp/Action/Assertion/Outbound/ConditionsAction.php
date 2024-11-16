@@ -23,28 +23,12 @@ use Psr\Log\LoggerInterface;
  */
 class ConditionsAction extends AbstractAssertionAction
 {
-    /** @var TimeProviderInterface */
-    protected $timeProvider;
-
-    /** @var int */
-    protected $expirationSeconds;
-
-    /**
-     * @param int $expirationSeconds
-     */
-    public function __construct(LoggerInterface $logger, TimeProviderInterface $timeProvider, $expirationSeconds)
+    public function __construct(LoggerInterface $logger, protected TimeProviderInterface $timeProvider, protected int $expirationSeconds)
     {
         parent::__construct($logger);
-
-        $this->expirationSeconds = $expirationSeconds;
-        $this->timeProvider = $timeProvider;
     }
 
-    /**
-     * @return void
-     */
-    protected function doExecute(AssertionContext $context)
-    {
+    protected function doExecute(AssertionContext $context): void {
         $partyEntityDescriptor = $context->getProfileContext()->getPartyEntityDescriptor();
 
         $conditions = new Conditions();

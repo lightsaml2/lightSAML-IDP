@@ -19,11 +19,7 @@ use LightSaml\Error\LightSamlValidationException;
 
 class ACSUrlValidatorAction extends AbstractProfileAction
 {
-    /**
-     * @return void
-     */
-    protected function doExecute(ProfileContext $context)
-    {
+    protected function doExecute(ProfileContext $context): void {
         $authnRequest = MessageContextHelper::asAuthnRequest($context->getInboundContext());
 
         if (false == $authnRequest->getAssertionConsumerServiceURL()) {

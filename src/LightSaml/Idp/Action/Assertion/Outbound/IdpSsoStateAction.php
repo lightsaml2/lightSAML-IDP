@@ -18,21 +18,12 @@ use Psr\Log\LoggerInterface;
 
 class IdpSsoStateAction extends AbstractAssertionAction
 {
-    /** @var SessionProcessorInterface */
-    private $sessionProcessor;
-
-    public function __construct(LoggerInterface $logger, SessionProcessorInterface $sessionProcessor)
+    public function __construct(LoggerInterface $logger, private SessionProcessorInterface $sessionProcessor)
     {
         parent::__construct($logger);
-
-        $this->sessionProcessor = $sessionProcessor;
     }
 
-    /**
-     * @return void
-     */
-    protected function doExecute(AssertionContext $context)
-    {
+    protected function doExecute(AssertionContext $context): void {
         if ($context->getAssertion()) {
             $this->sessionProcessor->processAssertions(
                 [$context->getAssertion()],

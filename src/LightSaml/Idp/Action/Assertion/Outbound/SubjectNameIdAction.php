@@ -22,21 +22,12 @@ use Psr\Log\LoggerInterface;
  */
 class SubjectNameIdAction extends AbstractAssertionAction
 {
-    /** @var NameIDProviderInterface */
-    protected $nameIdProvider;
-
-    public function __construct(LoggerInterface $logger, NameIdProviderInterface $nameIdProvider)
+    public function __construct(LoggerInterface $logger, protected NameIdProviderInterface $nameIdProvider)
     {
         parent::__construct($logger);
-
-        $this->nameIdProvider = $nameIdProvider;
     }
 
-    /**
-     * @return void
-     */
-    protected function doExecute(AssertionContext $context)
-    {
+    protected function doExecute(AssertionContext $context): void {
         $nameId = $this->nameIdProvider->getNameID($context);
         if ($nameId) {
             if (null == $context->getAssertion()->getSubject()) {

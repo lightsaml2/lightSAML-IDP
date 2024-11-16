@@ -29,11 +29,7 @@ use LightSaml\SamlConstants;
 
 class SsoIdpAssertionActionBuilder extends AbstractProfileActionBuilder
 {
-    /**
-     * @return void
-     */
-    protected function doInitialize()
-    {
+    protected function doInitialize(): void {
         $this->add(new CreateAssertionAction(
             $this->buildContainer->getSystemContainer()->getLogger()
         ), 100);

@@ -22,21 +22,12 @@ use Psr\Log\LoggerInterface;
  */
 class SignAssertionAction extends AbstractAssertionAction
 {
-    /** @var SignatureResolverInterface */
-    protected $signatureResolver;
-
-    public function __construct(LoggerInterface $logger, SignatureResolverInterface $signatureResolver)
+    public function __construct(LoggerInterface $logger, protected SignatureResolverInterface $signatureResolver)
     {
         parent::__construct($logger);
-
-        $this->signatureResolver = $signatureResolver;
     }
 
-    /**
-     * @return void
-     */
-    protected function doExecute(AssertionContext $context)
-    {
+    protected function doExecute(AssertionContext $context): void {
         $profileContext = $context->getProfileContext();
         $trustOptions = $profileContext->getTrustOptions();
 

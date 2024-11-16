@@ -18,11 +18,7 @@ use LightSaml\Helper;
 
 class AssertionIdAction extends AbstractAssertionAction
 {
-    /**
-     * @return void
-     */
-    protected function doExecute(AssertionContext $context)
-    {
+    protected function doExecute(AssertionContext $context): void {
         $id = Helper::generateID();
         $context->getAssertion()->setId($id);
 

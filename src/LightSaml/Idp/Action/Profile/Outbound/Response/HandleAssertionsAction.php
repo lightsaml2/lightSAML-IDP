@@ -26,13 +26,10 @@ use Psr\Log\LoggerInterface;
  */
 class HandleAssertionsAction extends AbstractProfileAction implements CompositeActionInterface
 {
-    /** @var ActionInterface[] */
-    protected $assertionActions;
-
     /**
      * @param ActionInterface[] $assertionActions
      */
-    public function __construct(LoggerInterface $logger, array $assertionActions = [])
+    public function __construct(LoggerInterface $logger, protected array $assertionActions = [])
     {
         parent::__construct($logger);
 
@@ -41,11 +38,7 @@ class HandleAssertionsAction extends AbstractProfileAction implements CompositeA
         }
     }
 
-    /**
-     * @return HandleAssertionsAction
-     */
-    public function add(ActionInterface $assertionAction)
-    {
+    public function add(ActionInterface $assertionAction): static {
         $this->assertionActions[] = $assertionAction;
 
         return $this;
@@ -53,11 +46,8 @@ class HandleAssertionsAction extends AbstractProfileAction implements CompositeA
 
     /**
      * @param callable $callable
-     *
-     * @return ActionInterface|null
      */
-    public function map($callable)
-    {
+    public function map($callable): ?ActionInterface {
         foreach ($this->assertionActions as $k => $action) {
             $newAction = call_user_func($callable, $action);
             if ($newAction) {
@@ -66,11 +56,7 @@ class HandleAssertionsAction extends AbstractProfileAction implements CompositeA
         }
     }
 
-    /**
-     * @return void
-     */
-    protected function doExecute(ProfileContext $context)
-    {
+    protected function doExecute(ProfileContext $context): void {
         $response = MessageContextHelper::asResponse($context->getOutboundContext());
 
         foreach ($this->assertionActions as $index => $action) {

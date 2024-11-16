@@ -20,10 +20,7 @@ class CreateResponseActionTest extends TestCase
         $this->assertInstanceOf(Response::class, $context->getOutboundMessage());
     }
 
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Psr\Log\LoggerInterface
-     */
-    private function getLoggerMock()
+    private function getLoggerMock(): LoggerInterface
     {
         return $this->getMockBuilder(LoggerInterface::class)->getMock();
     }
