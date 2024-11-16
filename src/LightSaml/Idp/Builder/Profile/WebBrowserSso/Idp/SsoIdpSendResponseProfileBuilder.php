@@ -24,11 +24,11 @@ use LightSaml\Profile\Profiles;
 
 class SsoIdpSendResponseProfileBuilder extends AbstractProfileBuilder
 {
-    private EntityDescriptor|null $partyEntityDescriptor;
-    private TrustOptions|null $partyTrustOptions;
-    private Endpoint|null $endpoint;
-    private SamlMessage|null $message;
-    private string|null $relayState;
+    private EntityDescriptor|null $partyEntityDescriptor = null;
+    private TrustOptions|null $partyTrustOptions = null;
+    private Endpoint|null $endpoint = null;
+    private SamlMessage|null $message = null;
+    private string|null $relayState = null;
 
     public function __construct(BuildContainerInterface $buildContainer, private array $assertionBuilders, private string $entityId)
     {
