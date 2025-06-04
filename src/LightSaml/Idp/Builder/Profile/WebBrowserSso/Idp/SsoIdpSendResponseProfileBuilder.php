@@ -33,11 +33,6 @@ class SsoIdpSendResponseProfileBuilder extends AbstractProfileBuilder
     public function __construct(BuildContainerInterface $buildContainer, private array $assertionBuilders, private string $entityId)
     {
         parent::__construct($buildContainer);
-
-        $this->entityId = $entityId;
-        foreach ($assertionBuilders as $builder) {
-            $this->addAssertionBuilder($builder);
-        }
     }
 
     public function setPartyEntityDescriptor(EntityDescriptor $entityDescriptor): static {
