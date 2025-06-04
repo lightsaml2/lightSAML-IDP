@@ -21,8 +21,6 @@ class AssertionVersionAction extends AbstractAssertionAction
     public function __construct(LoggerInterface $logger, private string $version)
     {
         parent::__construct($logger);
-
-        $this->version = $version;
     }
 
     protected function doExecute(AssertionContext $context): void {
